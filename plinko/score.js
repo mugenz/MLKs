@@ -39,10 +39,10 @@ function runAnalysis() {
 }
 const knn = (data, point, kk) => 
   _.chain(data)
-    .map(row => [distance(_.initial(row), point), _.last(row)])
-    .sortBy(row => row[0])
-    .slice(0, kk)
-    .countBy(row => row[1])
+    .map(row => [distance(_.initial(row), point), _.last(row)]) // find distance 
+    .sortBy(row => row[0]) // sort results, less distance up
+    .slice(0, kk) // keep k results
+    .countBy(row => row[1]) // count them
     .toPairs()
     .sortBy(row => row[1])
     .last()
